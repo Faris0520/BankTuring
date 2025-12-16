@@ -1,4 +1,5 @@
 class TransactionService:
+    
     def __init__(self, account_repository):
         self.account_repository = account_repository
 
