@@ -1,42 +1,51 @@
 # BankTuring
 
-Buat Akun
-- Nama
-- email
-- Tgl lahir
+Aplikasi banking sederhana untuk mengelola akun dan transaksi keuangan.
+
+## Fitur Utama
+
+### 1. Registrasi Akun Baru
+Pengguna dapat membuat akun baru dengan mengisi informasi berikut:
+- Nama lengkap
+- Email
+- Tanggal lahir
 - Nama gadis ibu
-- No kartu keluarga
-- nomor induk kependudukan
-- nomor pos
-- Pin
+- Nomor Kartu Keluarga (KK)
+- Nomor Induk Kependudukan (NIK)
+- Kode pos
+- PIN keamanan
 
-AKUN
-- Bank account number
-- Balance
-- PIN
+### 2. Informasi Akun
+Setiap akun memiliki: 
+- Nomor rekening bank
+- Saldo
+- PIN keamanan
 
-Show saldo
-- Balance
+### 3. Cek Saldo
+- Melihat saldo rekening terkini
 
-Nambah saldo
-- add Balance
-- Date time
-- Pin
+### 4. Setor Tunai (Deposit)
+- Menambah saldo ke rekening
+- Mencatat tanggal dan waktu transaksi
+- Memerlukan verifikasi PIN
 
-Narik saldo
-- Withdraw Balance
-- Date time
-- Pin
+### 5. Tarik Tunai (Withdraw)
+- Menarik saldo dari rekening
+- Mencatat tanggal dan waktu transaksi
+- Memerlukan verifikasi PIN
 
-Transfer saldo
-- Bank account number tujuan
-- Balance
-- Date time
-- Pin
+### 6. Transfer
+- Transfer saldo ke rekening lain
+- Memerlukan nomor rekening tujuan
+- Mencatat tanggal dan waktu transaksi
+- Memerlukan verifikasi PIN
 
-Show history
-- Transfer saldo
-- Nambah Saldo
-- Narik Saldo
-- Transfer saldo
+### 7. Riwayat Transaksi
+Melihat history semua transaksi: 
+- Setor tunai
+- Tarik tunai
+- Transfer (masuk dan keluar)
 
+---
+
+**BankTuring** - Solusi perbankan digital yang aman dan mudah digunakan. 
