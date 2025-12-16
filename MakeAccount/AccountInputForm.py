@@ -16,7 +16,7 @@ class AccountInputUI:
     def ambil_data_person(self):
         while True:
             data = {
-                "name": input("Nama : "),
+                "name": input(f"{'Nama':<30} : "),
                 "birth": input("Tanggal Lahir : "),
                 "mother_name": input("Nama Ibu : "),
                 "family_card_number": input("Nomor KK : "),

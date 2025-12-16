@@ -8,7 +8,7 @@ class Database:
     def inisialisasi(self):
         self.cursor.execute("""
         CREATE TABLE IF NOT EXISTS persons (
-            nik TEXT PRIMARY KEY,
+            national_identification_number TEXT PRIMARY KEY,
             name TEXT,
             birth TEXT,
             mother_name TEXT,
@@ -19,10 +19,10 @@ class Database:
 
         self.cursor.execute("""
         CREATE TABLE IF NOT EXISTS accounts (
-            no_rek TEXT PRIMARY KEY,
+            bank_account_number TEXT PRIMARY KEY,
             balance INTEGER,
             pin TEXT,
-            person_nik TEXT,
+            national_identification_number TEXT,
             FOREIGN KEY (person_nik) REFERENCES persons(nik)
         )
         """)

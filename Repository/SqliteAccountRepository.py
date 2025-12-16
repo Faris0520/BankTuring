@@ -1,6 +1,6 @@
 from AccountPerson.Account import Account
 from AccountPerson.person import Person
-from .Account_repository import AccountRepository
+from .AccountRepository import AccountRepository
 
 class SQLiteAccountRepository(AccountRepository):
     def __init__(self, database):

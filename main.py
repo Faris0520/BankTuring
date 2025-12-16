@@ -1,5 +1,5 @@
-from Db.database import Database
-from Repository.sqlite_account_repository import SQLiteAccountRepository
+from Database.database import Database
+from Repository.SqliteAccountRepository import SQLiteAccountRepository
 from ProcessLogic.TransactionService import TransactionService
 from util import UI
 
