@@ -13,7 +13,7 @@ Pengguna dapat membuat akun baru dengan mengisi informasi berikut:
 - Nomor Kartu Keluarga (KK)
 - Nomor Induk Kependudukan (NIK)
 - Kode pos
-- PIN keamanan
+- PIN keamanan 
 
 ### 2. Informasi Akun
 Setiap akun memiliki: 
