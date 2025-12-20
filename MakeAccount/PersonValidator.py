@@ -24,13 +24,13 @@ class PersonValidator:
             raise ValidationError("Nama ibu tidak boleh kosong")
 
     @staticmethod
-    def family_card_number_validation(kk):
-        if not kk.isdigit() or len(kk) != 16:
+    def family_card_number_validation(family_card_number):
+        if not family_card_number.isdigit() or len(family_card_number) != 16:
             raise ValidationError("Nomor KK harus 16 digit angka")
 
     @staticmethod
-    def national_identification_number_validation(nik):
-        if not nik.isdigit() or len(nik) != 16:
+    def national_identification_number_validation(national_identification_number):
+        if not national_identification_number.isdigit() or len(national_identification_number) != 16:
             raise ValidationError("NIK harus 16 digit angka")
 
     @staticmethod

@@ -29,3 +29,6 @@ class Person :
     def get_postal_code(self) :
         return self.__postal_code
     
+    @property
+    def get_family_card_number(self) :
+        return self.__family_card_number

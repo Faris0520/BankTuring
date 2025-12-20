@@ -4,7 +4,7 @@ class ValidationError(Exception):
 class AccountValidator:
 
     @staticmethod
-    def validasi_pin(pin: str):
+    def pin_validation(pin: str):
         if not pin.isdigit():
             raise ValidationError("PIN harus berupa angka")
 
@@ -12,17 +12,17 @@ class AccountValidator:
             raise ValidationError("PIN harus 6 digit")
 
     @staticmethod
-    def validasi_nik(nik: str):
-        if not nik.isdigit():
+    def national_identification_number_validation(national_identification_number):
+        if not national_identification_number.isdigit():
             raise ValidationError("NIK harus berupa angka")
 
-        if len(nik) != 16:
+        if len(national_identification_number) != 16:
             raise ValidationError("NIK harus 16 digit")
 
     @staticmethod
-    def validasi_nomor_kk(kk: str):
-        if not kk.isdigit():
+    def family_card_validation(family_card_number):
+        if not family_card_number.isdigit():
             raise ValidationError("Nomor KK harus berupa angka")
 
-        if len(kk) != 16:
+        if len(family_card_number) != 16:
             raise ValidationError("Nomor KK harus 16 digit")

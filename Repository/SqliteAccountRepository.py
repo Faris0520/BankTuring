@@ -31,5 +31,40 @@ class SQLiteAccountRepository(AccountRepository):
         cur.execute("""
         UPDATE accounts SET balance = ?
         WHERE bank_account_number = ?
-        """, (account.balance, account.bank_account_number))
+        """, (account.get_balance(), account.get_bank_account_number()))
+        self.db.conn.commit()
+
+    def save_new_account(self, account):
+        """
+        Insert akun baru + data person ke database.
+        """
+        cur = self.db.cursor
+
+        person = account.get_person
+        
+        cur.execute("""
+        INSERT OR IGNORE INTO persons
+            (national_identification_number, name, birth, mother_name, family_card_number, postal_code)
+        VALUES (?, ?, ?, ?, ?, ?)
+        """, (
+            person.get_national_identification_number,
+            person.get_name,
+            person.get_birth,
+            person.get_mother_name,
+            person.get_family_card_number,
+            person.get_postal_code,
+        ))
+
+        # insert ke tabel accounts
+        cur.execute("""
+        INSERT INTO accounts
+            (balance, bank_account_number, pin, national_identification_number)
+        VALUES (?, ?, ?, ?)
+        """, (
+            account.get_balance,
+            account.get_bank_account_number,
+            account.get_pin,
+            person.get_national_identification_number,
+        ))
+
         self.db.conn.commit()

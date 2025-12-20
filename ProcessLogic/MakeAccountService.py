@@ -1,6 +1,6 @@
 from AccountPersonTemplate.Person import Person
 from AccountPersonTemplate.Account import Account
-import random
+from Repository.SqliteAccountRepository import SQLiteAccountRepository
 
 class MakeAccountService:
     def __init__(self, person_repo, account_repo):
@@ -8,8 +8,8 @@ class MakeAccountService:
         self.account_repo = account_repo
         
     
-    def create_account(self, person_data, pin):
-        person = Person(**person_data)
+    def create_account(self,account):
+        
         self.person_repo.save(person)
 
         account = Account(person, pin)

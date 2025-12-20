@@ -1,11 +1,11 @@
 import os
-from AccountPersonTemplate import Person
-from PersonValidator import PersonValidator, ValidationError
+from AccountPersonTemplate.Person import Person
+from .PersonValidator import PersonValidator, ValidationError
 
 
-class PersonInputUI:
+class PersonInputForm:
 
-    def ambil_person(self):
+    def set_person(self):
         while True:
             try:
                 name = input(f"{'Nama':<30} : ")

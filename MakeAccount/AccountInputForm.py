@@ -1,33 +1,35 @@
-import AccountValidator
 import os
+import random
+from AccountPersonTemplate.Account import Account
+from .AccountValidator import AccountValidator, ValidationError
 
-class AccountInputUI:
-    def set_pin(self):
-        while True:
-            pin = input("Masukkan PIN (6 digit): ")
-            try:
-                AccountValidator.validasi_pin(pin)
-                return pin
-            except AccountValidator.ValidationError as e:
-                print("Error:", e)
-                input("Tekan Enter untuk Melanjutkan")
-                os.system("cls")
 
-    def get_data_person(self):
+class AccountInputForm:
+
+
+    default_balance = 0
+    
+    def generate_account_number(self):
+        return "".join(str(random.randint(0, 9)) for _ in range(10))
+
+    def set_account(self,person):
         while True:
-            data = {
-                "name": input(f"{'Nama':<30} : "),
-                "birth": input("Tanggal Lahir : "),
-                "mother_name": input("Nama Ibu : "),
-                "family_card_number": input("Nomor KK : "),
-                "national_identification_number": input("NIK : "),
-                "postal_code": input("Kode POS : ")
-            }
             try:
-                AccountValidator.validasi_nomor_kk(data["family_card_number"])
-                AccountValidator.validasi_nik(data["national_identification_number"])
-                return data
-            except AccountValidator.ValidationError as e:
-                print("Error:", e)
-                input("Tekan Enter untuk Melanjutkan")
-                os.system("cls")
+                # generate nomor rekening
+                account_number = self.generate_account_number()
+
+                # input PIN
+                pin = input(f"{'PIN (6 digit)': <30} : ")
+                AccountValidator.pin_validation(pin)
+
+                return Account(
+                    AccountInputForm.default_balance,
+                    account_number,
+                    pin,
+                    person
+                )
+
+            except ValidationError as e:
+                print("\nError:", e)
+                input("Tekan Enter untuk mengulang...")
+                os.system("cls" if os.name == "nt" else "clear")
