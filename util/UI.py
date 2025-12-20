@@ -1,17 +1,31 @@
+import os
+
+def clear() :
+    os.system("cls")
+
+def enter_to_continue():
+    input("Tekan Enter Untuk Melanjutkan!")
+
+def not_available_menu():
+    print("Menu Tidak Tersedia!")
+    enter_to_continue()
+
 def header(word):
     print("="*21)
     print(f"===={word:^13}====")
     print("="*21)
+
+def input_user(amount_choice):
+    input_recomendation = "/".join(str(i) for i in range(1,amount_choice+1))
+    return int(input(f"({input_recomendation})> "))
     
+
 def menu_landing_page():
     print("Selamat Datang di Bank Turing, silahkan pilih Menu")
     print("1. Masuk")
     print("2. Buat Akun")
-    user_choice = int(input("(1/2)> "))
-    if user_choice == 1 or user_choice == 2 :
-        return user_choice
-    else :
-        return 0
+    print("3. Keluar")
+    return input_user(3)
 
 def menu_login():
     print("Silahkan login ke akun Anda")

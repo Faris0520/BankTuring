@@ -2,7 +2,7 @@ import AccountValidator
 import os
 
 class AccountInputUI:
-    def ambil_pin(self):
+    def set_pin(self):
         while True:
             pin = input("Masukkan PIN (6 digit): ")
             try:
@@ -13,7 +13,7 @@ class AccountInputUI:
                 input("Tekan Enter untuk Melanjutkan")
                 os.system("cls")
 
-    def ambil_data_person(self):
+    def get_data_person(self):
         while True:
             data = {
                 "name": input(f"{'Nama':<30} : "),

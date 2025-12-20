@@ -1,5 +1,5 @@
 from .PersonRepository import PersonRepository
-from AccountPerson.person import Person
+from AccountPersonTemplate.Person import Person
 
 class PersonRepositoryDB(PersonRepository):
 
@@ -8,11 +8,11 @@ class PersonRepositoryDB(PersonRepository):
 
     def save(self, person):
         query = """
-            INSERT INTO persons (nik, name, birth, mother_name, family_card_number, postal_code)
+            INSERT INTO persons (national_identification_number, name, birth, mother_name, family_card_number, postal_code)
             VALUES (?, ?, ?, ?, ?, ?)
         """
         self.db.cursor.execute(query, (
-            person.get_nik(),
+            person.get_national_identification_number(),
             person.get_name(),
             person.get_birth(),
             person.get_mother_name(),
@@ -21,9 +21,9 @@ class PersonRepositoryDB(PersonRepository):
         ))
         self.db.conn.commit()
 
-    def get_by_nik(self, nik):
-        query = "SELECT  name, birth, mother_name, family_card_number,national_identification_number, postal_code FROM persons WHERE nik=?"
-        result = self.db.cursor.execute(query, (nik,)).fetchone()
+    def get_by_national_identification_number(self, national_identification_number):
+        query = "SELECT  name, birth, mother_name, family_card_number,national_identification_number, postal_code FROM persons WHERE national_identification_number=?"
+        result = self.db.cursor.execute(query, (national_identification_number,)).fetchone()
 
         if result is None:
             return None

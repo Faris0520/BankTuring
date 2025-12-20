@@ -3,9 +3,9 @@ from abc import ABC, abstractmethod
 class AccountRepository(ABC):
 
     @abstractmethod
-    def ambil_berdasarkan_no_rek(self, no_rek):
+    def get_by_bank_account_number(self, bank_account_number):
         pass
 
     @abstractmethod
-    def simpan(self, account):
+    def save(self, account):
         pass

@@ -1,5 +1,5 @@
-from AccountPerson.person import Person
-from AccountPerson.Account import Account
+from AccountPersonTemplate.Person import Person
+from AccountPersonTemplate.Account import Account
 import random
 
 class MakeAccountService:

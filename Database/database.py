@@ -23,7 +23,7 @@ class Database:
             balance INTEGER,
             pin TEXT,
             national_identification_number TEXT,
-            FOREIGN KEY (person_nik) REFERENCES persons(nik)
+            FOREIGN KEY (national_identification_number) REFERENCES persons(national_identification_number)
         )
         """)
         self.conn.commit()
