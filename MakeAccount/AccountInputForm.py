@@ -12,7 +12,7 @@ class AccountInputForm:
     def generate_account_number(self):
         return "".join(str(random.randint(0, 9)) for _ in range(10))
 
-    def set_account(self,person):
+    def set_account(self):
         while True:
             try:
                 # generate nomor rekening
@@ -22,11 +22,10 @@ class AccountInputForm:
                 pin = input(f"{'PIN (6 digit)': <30} : ")
                 AccountValidator.pin_validation(pin)
 
-                return Account(
+                return (
                     AccountInputForm.default_balance,
                     account_number,
-                    pin,
-                    person
+                    pin
                 )
 
             except ValidationError as e:

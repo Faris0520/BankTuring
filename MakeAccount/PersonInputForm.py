@@ -26,14 +26,14 @@ class PersonInputForm:
                 postal_code = input(f"{'Kode POS':<30} : ")
                 PersonValidator.postal_code_validation(postal_code)
 
-                return Person(
-                    name,
-                    birth,
-                    mother_name,
-                    family_card_number,
-                    national_identification_number,
-                    postal_code
-                )
+                return {
+                    "name" : name,
+                    "birth" : birth,
+                    "mother_name" : mother_name,
+                    "family_card_number" : family_card_number,
+                    "national_identification_number" : national_identification_number,
+                    "postal_code" : postal_code
+                }
 
             except ValidationError as e:
                 print("\nError:", e)

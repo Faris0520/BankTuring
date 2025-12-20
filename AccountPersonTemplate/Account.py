@@ -21,3 +21,11 @@ class Account :
     @property
     def get_person(self) :
         return self.__person
+
+    def deposit(self, amount):
+        self.__balance += amount
+
+    def withdraw(self, amount):
+        if amount > self.__balance:
+            raise ValueError("Saldo tidak mencukupi")
+        self.__balance -= amount
