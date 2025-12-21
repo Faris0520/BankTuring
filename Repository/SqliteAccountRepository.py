@@ -21,9 +21,28 @@ class SQLiteAccountRepository(AccountRepository):
         if not row:
             return None
 
+        return self._map_row_to_account(row)
+
+    def get_by_account_number(self, bank_account_number):
+        cur = self.db.cursor
+        cur.execute("""
+        SELECT a.balance, a.bank_account_number, a.pin,
+            p.name, p.birth, p.mother_name,
+            p.family_card_number, p.national_identification_number, p.postal_code
+        FROM accounts a
+        JOIN persons p ON a.national_identification_number = p.national_identification_number
+        WHERE a.bank_account_number = ?
+        """, (bank_account_number,))
+
+        row = cur.fetchone()
+        if not row:
+            return None
+
+        return self._map_row_to_account(row)
+
+    def _map_row_to_account(self, row):
         balance, bank_account_number, pin, *person_data = row
         person = Person(*person_data)
-
         return Account(balance, bank_account_number, pin, person)
 
 
