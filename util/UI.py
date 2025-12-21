@@ -105,10 +105,6 @@ def print_receipt(
     balance_after,
     notes
 ):
-    """
-    Cetak struk transaksi sederhana untuk CLI.
-    Semua parameter opsional agar bisa dipakai untuk Cek Saldo, Deposit, Transfer, dll.
-    """
     now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     print("=" * 36)
     print("BANK TURING".center(36))
