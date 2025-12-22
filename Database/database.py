@@ -43,20 +43,4 @@ class Database:
         )
         """)
         self.conn.commit()
-        self._ensure_transaction_columns()
-# ==================================================================        
-    def tutup(self):
-        self.conn.close()
 
-    def _ensure_transaction_columns(self):
-        self._ensure_column("transactions", "from_account_number", "TEXT")
-        self._ensure_column("transactions", "to_account_number", "TEXT")
-
-    def _ensure_column(self, table_name, column_name, column_type):
-        self.cursor.execute(f"PRAGMA table_info({table_name})")
-        columns = [row[1] for row in self.cursor.fetchall()]
-        if column_name not in columns:
-            self.cursor.execute(
-                f"ALTER TABLE {table_name} ADD COLUMN {column_name} {column_type}"
-            )
-            self.conn.commit()
