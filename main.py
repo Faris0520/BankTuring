@@ -8,6 +8,7 @@ from MakeAccount.PersonInputForm import PersonInputForm
 from MakeAccount.AccountInputForm import AccountInputForm
 from Service.MakeAccountService import MakeAccountService
 from Service.LoginService import LoginService
+from Service.AdminService import AdminService
 from Service.TransactionError import TransactionError
 
 ui = UI
@@ -17,7 +18,8 @@ db.inisialisasi()
 repo = SQLiteAccountRepository(db)
 history_repo = SQLiteTransactionRepository(db)
 
-login_service = LoginService(repo)
+admin_service = AdminService()                 # ⬅️ TAMBAH
+login_service = LoginService(repo, admin_service)  # ⬅️ UBAH
 service = TransactionService(repo, history_repo)
 history_service = TransactionHistoryService(history_repo)
 person = PersonInputForm()
@@ -37,16 +39,45 @@ while True :
             ui.clear()
             ui.header("LOGIN")
             login_information = ui.menu_login()
-            current_account = login_service.login(*login_information)
-        
-        
+            current_user = login_service.login(*login_information)
+
+           # ===== CEK ADMIN =====
+            if hasattr(current_user, "get_username"):
+                while True:
+                    ui.clear()
+                    ui.header("MENU ADMIN")
+
+                    print("1. Lihat Semua Akun")
+                    print("2. Logout")
+
+                    choice = input("Pilih menu: ")
+
+                    if choice == "1":
+                        ui.clear()
+                        ui.header("DAFTAR AKUN")
+
+                        accounts = repo.get_all()
+                        ui.show_all_accounts(accounts)
+
+                        ui.enter_to_continue()
+
+                    elif choice == "2":
+                        break
+
+                    else:
+                        ui.not_available_menu()
+                        ui.enter_to_continue()
+
+                continue  # ⬅️ ADMIN TIDAK BOLEH LANJUT KE USER
+
+
         except ValueError as e:
             print(e)
             ui.enter_to_continue()
             continue
         
-        if not current_account:
-            continue
+        current_account = current_user
+
         
         while True:
             ui.clear()
